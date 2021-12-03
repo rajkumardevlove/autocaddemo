@@ -79,6 +79,10 @@
   border-style: solid;
 }
 
+.u-section-2 .u-table-entity-1 {
+  min-height: 100px;
+}
+
 .u-block-8470-4 {
   font-weight: 700;
   background-image: none;
@@ -150,10 +154,6 @@
   .u-section-2 .u-custom-html-1 {
     height: auto;
     margin-right: 615px;
-  }
-
-  .u-section-2 .u-table-entity-1 {
-    min-height: 100px;
   }
 
   .u-section-2 .u-table-cell-5 {

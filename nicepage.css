@@ -34026,14 +34026,14 @@ a.u-link.u-text-hover-grey-90:hover {
   text-transform: uppercase;
   background-image: none;
   align-self: center;
-  margin: 6px 21px 0 auto;
+  margin: 6px 0 0 auto;
   padding: 8px 21px 8px 20px;
 }
 
 .u-header .u-group-1 {
   width: 317px;
   min-height: 90px;
-  margin: -18px auto 0 0;
+  margin: -20px auto 0 0;
 }
 
 .u-header .u-text-1 {
@@ -34111,6 +34111,10 @@ a.u-link.u-text-hover-grey-90:hover {
     margin-top: -5px;
     margin-left: 15px;
     width: 243px;
+  }
+
+  .u-header .u-text-3 {
+    margin-top: 0;
   }
 
   .u-header .u-menu-1 {

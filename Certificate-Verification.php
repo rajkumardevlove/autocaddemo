@@ -151,7 +151,7 @@
 </li><li class="u-nav-item"><a class="u-button-style u-hover-palette-1-base u-nav-link u-palette-5-light-1" href="3D-Animation.html">3D Animation</a>
 </li></ul>
 </div>
-</li><li class="u-nav-item"><a class="u-active-custom-color-1 u-button-style u-nav-link u-palette-5-dark-1 u-text-active-white u-text-hover-palette-4-base" href="Certificate-Verification.html" style="padding: 10px 6px;">Certificate Verification</a>
+</li><li class="u-nav-item"><a class="u-active-custom-color-1 u-button-style u-nav-link u-palette-5-dark-1 u-text-active-white u-text-hover-palette-4-base" href="Certificate-Verification.php" style="padding: 10px 6px;">Certificate Verification</a>
 </li><li class="u-nav-item"><a class="u-active-custom-color-1 u-button-style u-nav-link u-palette-5-dark-1 u-text-active-white u-text-hover-palette-4-base" href="Services.html" style="padding: 10px 6px;">Services</a><div class="u-nav-popup"><ul class="u-border-2 u-border-palette-5-dark-1 u-h-spacing-20 u-nav u-unstyled u-v-spacing-10"><li class="u-nav-item"><a class="u-button-style u-hover-palette-1-base u-nav-link u-palette-5-light-1" href="Architectural-Services.html">Architectural CAD Services</a>
 </li><li class="u-nav-item"><a class="u-button-style u-hover-palette-1-base u-nav-link u-palette-5-light-1" href="Structrucal-Services.html">Structural Services</a>
 </li><li class="u-nav-item"><a class="u-button-style u-hover-palette-1-base u-nav-link u-palette-5-light-1" href="MEP-Services.html">MEP Engineering Services</a>
@@ -260,7 +260,7 @@
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="3D-Animation.html">3D Animation</a>
 </li></ul>
 </div>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Certificate-Verification.html" style="padding: 10px 6px;">Certificate Verification</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Certificate-Verification.php" style="padding: 10px 6px;">Certificate Verification</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Services.html" style="padding: 10px 6px;">Services</a><div class="u-nav-popup"><ul class="u-border-2 u-border-palette-5-dark-1 u-h-spacing-20 u-nav u-unstyled u-v-spacing-10"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Architectural-Services.html">Architectural CAD Services</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Structrucal-Services.html">Structural Services</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="MEP-Services.html">MEP Engineering Services</a>
@@ -290,16 +290,29 @@
         <img class="u-align-center u-image u-image-default u-image-1" src="images/CERTIFICATE-VERIFICATION.jpg" alt="" data-image-width="558" data-image-height="226">
         <p class="u-text u-text-2">Autodraft Cad Training Centre offers Certificate Verification, an online facility, for students to confirm their successful completion of their courses. Students, who have a valid Student ID, can verify their certificates online, after completing their courses as per standard software combinations.<span style="font-weight: 700;"></span>
         </p>
-        <p class="u-text u-text-3">Certificate Verification also assures students that the certificate they received from our institute</p>
       </div>
     </section>
     <section class="u-align-center u-clearfix u-section-2" id="sec-742d">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-clearfix u-sheet u-sheet-1">
         <h4 class="u-align-left u-text u-text-1">Enter Your Certificate Number&nbsp;</h4>
         <div class="u-clearfix u-custom-html u-expanded-width-xs u-custom-html-1">
-          <form action="/action_page.php">
+          <?php
+            $connection = mysqli_connect('localhost','root','root','certificate_data');
+            if(isset($_POST['search']))
+            {
+             $searchkey = $_POST['search'];
+             $sql = "SELECT * FROM show_data WHERE cert_number = '$searchkey'";
+            }
+            else
+            {
+			$searchkey = "";
+            $sql = "SELECT * FROM show_data WHERE cert_number = '$searchkey%'";
+            }	
+            $result = mysqli_query($connection,$sql);
+        ?>
+		  <form action="" method="POST">
             <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Certificate Number" size="50" maxlength="50" style="height:40px;width:325px;" required="">
+              <input type="text" name="search" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Certificate Number" size="50" maxlength="50" style="height:40px;width:325px;" required="" value="<?php echo $searchkey; ?>" >
             </div>
             <br>
             <button type="submit" class="button button2" style="width:120px">Search</button>
@@ -312,33 +325,35 @@
               <col width="40.6%">
               <col width="59.4%">
             </colgroup>
+			<?php while($row = mysqli_fetch_object($result)) { ?>
             <tbody class="u-align-center u-table-body">
               <tr style="height: 27px;">
                 <td class="u-border-3 u-border-grey-50 u-first-column u-grey-10 u-table-cell u-table-cell-1">Certificate Number</td>
-                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-2"></td>
+                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-2"><?php echo $row->cert_number ?></td>
               </tr>
               <tr style="height: 37px;">
                 <td class="u-border-3 u-border-grey-50 u-grey-10 u-table-cell u-table-cell-3">Student Name</td>
-                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-4"></td>
+                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-4"><?php echo $row->student_name ?></td>
               </tr>
               <tr style="height: 47px;">
                 <td class="u-border-3 u-border-grey-50 u-first-column u-grey-10 u-table-cell u-table-cell-5">Course Name<span style="font-weight: 700;"></span>
                 </td>
-                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-6"></td>
+                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-6"><?php echo $row->course_name ?></td>
               </tr>
               <tr style="height: 47px;">
                 <td class="u-border-3 u-border-grey-50 u-grey-10 u-table-cell u-table-cell-7">Certification</td>
-                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-8"></td>
+                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-8"><?php echo $row->cert_type ?></td>
               </tr>
               <tr style="height: 47px;">
                 <td class="u-border-3 u-border-grey-50 u-grey-10 u-table-cell u-table-cell-9">Start Date</td>
-                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-10"></td>
+                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-10"><?php echo $row->start_date ?></td>
               </tr>
               <tr style="height: 47px;">
                 <td class="u-border-3 u-border-grey-50 u-grey-10 u-table-cell u-table-cell-11">Completion Date</td>
-                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-12"></td>
-              </tr>
+                <td class="u-border-3 u-border-grey-50 u-table-cell u-table-cell-12"><?php echo $row->end_date ?></td>
+              </tr>			  
             </tbody>
+			<?php } ?>
           </table>
         </div>
       </div>
@@ -480,7 +495,7 @@
                           <a href="Courses.html" data-page-id="503429029" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-4">Courses</a>
                         </li>
                         <li>
-                          <a href="Certificate-Verification.html" data-page-id="484424093" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-5">Certificate Verification</a>
+                          <a href="Certificate-Verification.php" data-page-id="484424093" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-5">Certificate Verification</a>
                         </li>
                         <li>
                           <a href="Services.html" data-page-id="1391214042" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-6">Services</a>

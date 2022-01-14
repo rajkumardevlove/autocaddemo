@@ -301,7 +301,7 @@
         <h4 class="u-align-left u-text u-text-1">Enter Your Certificate Number&nbsp;</h4>
         <div class="u-clearfix u-custom-html u-expanded-width-xs u-custom-html-1">
 		<?php
-            $connection = mysqli_connect('localhost','root','root','certificate_data');
+            $connection = mysqli_connect('localhost','rajkumar','database','certificate_data');
             if(isset($_POST['search']))
             {
              $searchkey = $_POST['search'];

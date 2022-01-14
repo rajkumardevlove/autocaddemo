@@ -305,7 +305,7 @@
             if(isset($_POST['search']))
             {
              $searchkey = $_POST['search'];
-             $sql = "SELECT * FROM show_data WHERE cert_number = '$searchkey%'";
+             $sql = "SELECT * FROM show_data WHERE cert_number = '$searchkey'";
             }
             else
             {

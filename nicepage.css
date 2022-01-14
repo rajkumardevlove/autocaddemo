@@ -34113,6 +34113,10 @@ a.u-link.u-text-hover-grey-90:hover {
     width: 243px;
   }
 
+  .u-header .u-text-3 {
+    margin-top: 0;
+  }
+
   .u-header .u-menu-1 {
     margin-right: -33px;
     margin-left: 20px;
